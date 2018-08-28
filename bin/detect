@@ -1,0 +1,7 @@
+#!/bin/sh
+
+BUILD_DIR=$1
+MAGICK_DIR=$BUILD_DIR/.magick
+
+echo "ImageMagick Policy"
+exit 0

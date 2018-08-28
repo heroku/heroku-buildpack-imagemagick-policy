@@ -1,0 +1,25 @@
+#!/bin/sh
+
+BUILD_DIR=$1
+MAGICK_DIR=$BUILD_DIR/.magick
+
+if [ -f $MAGICK_DIR/policy.xml ]; then
+  echo "-----> Skipping as .magick/policy.xml already exists"
+else
+  echo "-----> Writing ImageMagick policy file"
+  mkdir -p $MAGICK_DIR
+  cat > $MAGICK_DIR/policy.xml <<EOF
+<policymap>
+  <policy domain="coder" rights="none" pattern="EPHEMERAL" />
+  <policy domain="coder" rights="none" pattern="HTTPS" />
+  <policy domain="coder" rights="none" pattern="MVG" />
+  <policy domain="coder" rights="none" pattern="MSL" />
+  <policy domain="coder" rights="none" pattern="PS" />
+  <policy domain="coder" rights="none" pattern="PS2" />
+  <policy domain="coder" rights="none" pattern="PS3" />
+  <policy domain="coder" rights="none" pattern="EPS" />
+  <policy domain="coder" rights="none" pattern="PDF" />
+  <policy domain="coder" rights="none" pattern="XPS" />
+</policymap>
+EOF
+fi
